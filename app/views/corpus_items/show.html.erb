@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @corpus_item.title %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @corpus_item.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_corpus_item_path(@corpus_item) %> |
+<%= link_to 'Back', corpus_items_path %>

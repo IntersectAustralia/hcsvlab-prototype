@@ -1,0 +1,43 @@
+<div class="well pull-left" style="height: 500px; max-width: 240px; padding: 8px 0;">
+<ul class="nav nav-list pull-left">
+  <li class="nav-header">Year</li>
+  <%= form_tag documents_path, :method => :get do %>
+      <label class="search-label">from</label>
+      <%= text_field_tag :year_from, params[:year_from] %><br>
+      <label class="search-label">to</label>
+      <%= text_field_tag :year_to, params[:year_to] %><br>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
+  <li class="nav-header">Corpus</li>
+  <% for row in @search.facet(:corpus_name).rows %>
+    <% if params[:corpus_name].blank? %>
+      <li><%= link_to row.value, :corpus_name => row.value %> (<%= row.count %>)</li>
+    <% else %>
+      <li><strong><%= row.value %></strong> (<%= link_to "remove", :corpus_name => nil %>)</li>
+    <% end %>
+  <% end %>    
+
+  <li class="nav-header">Sub-Corpus</li>
+  <% for row in @search.facet(:title).rows %>
+    <li>
+    <% if params[:title].blank? %>
+      <%= link_to row.value, :title => row.value %> (<%= row.count %>)
+    <% else %>
+      <strong><%= row.value %></strong> (<%= link_to "remove", :title => nil %>)
+    <% end %>
+    </li>
+  <% end %>
+
+  <li class="nav-header">Media Type</li>
+  <% for row in @search.facet(:media_type).rows %>
+    <li>
+    <% if params[:media_type].blank? %>
+      <%= link_to row.value, :media_type => row.value %> (<%= row.count %>)
+    <% else %>
+      <strong><%= row.value %></strong> (<%= link_to "remove", :media_type => nil %>)
+    <% end %>
+    </li>
+  <% end %>
+</ul>  
+</div>

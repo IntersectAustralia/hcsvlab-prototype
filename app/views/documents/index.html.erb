@@ -1,0 +1,29 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a class="brand" href="/documents">HCSvLab</a>
+  </div>
+</div>
+
+
+<%= render(:partial => 'search_form') %>
+
+
+<div class="pull-left">
+<table class="table">
+  <tr>
+    <th>Corpus</th>
+    <th>Sub-Corpus</th>
+    <th>Year</th>
+    <th>Type</th>
+  </tr>
+
+<% @documents.each do |document| %>
+  <tr>
+    <td><%= document.corpus_item.corpus_name %></td>
+    <td><%= document.corpus_item.title%></td>
+    <td><%= document.corpus_item.year %></td>
+    <td><%= document.media_type %></td>
+  </tr>
+<% end %>
+</table>
+</div>
