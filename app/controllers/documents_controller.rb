@@ -17,8 +17,8 @@ class DocumentsController < ApplicationController
       facet(:corpus_name)
       with(:corpus_name, params[:corpus_name]) if params[:corpus_name].present?
       
-      facet(:title)
-      with(:title, params[:title]) if params[:title].present?
+      facet(:sub_corpus_name)
+      with(:sub_corpus_name, params[:sub_corpus_name]) if params[:sub_corpus_name].present?
       
       facet(:media_type)
       with(:media_type, params[:media_type]) if params[:media_type].present?
@@ -61,8 +61,9 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(params[:document])
-
+    @corpus_item = CorpusItem.find(params[:corpus_item_id])
+    @document = Document.new(params[:document]) 
+    @document.corpus_item = @corpus_item
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }

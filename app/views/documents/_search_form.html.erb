@@ -19,12 +19,12 @@
   <% end %>    
 
   <li class="nav-header">Sub-Corpus</li>
-  <% for row in @search.facet(:title).rows %>
+  <% for row in @search.facet(:sub_corpus_name).rows %>
     <li>
-    <% if params[:title].blank? %>
-      <%= link_to row.value, :title => row.value %> (<%= row.count %>)
+    <% if params[:sub_corpus_name].blank? %>
+      <%= link_to row.value, :sub_corpus_name => row.value %> (<%= row.count %>)
     <% else %>
-      <strong><%= row.value %></strong> (<%= link_to "remove", :title => nil %>)
+      <strong><%= row.value %></strong> (<%= link_to "remove", :sub_corpus_name => nil %>)
     <% end %>
     </li>
   <% end %>

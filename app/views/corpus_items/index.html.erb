@@ -2,18 +2,20 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Date</th>
-    <th></th>
+    <th>Corpus</th>
+    <th>Sub Corpus</th>
+    <th>Item</th>
+    <th>Year</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @corpus_items.each do |corpus_item| %>
   <tr>
+    <td><%= corpus_item.corpus_name %></td>
+    <td><%= corpus_item.sub_corpus_name %></td>
     <td><%= corpus_item.title %></td>
     <td><%= corpus_item.year %></td>
-    <td><%= corpus_item.corpus_name %></td>
     <td><%= link_to 'Show', corpus_item %></td>
     <td><%= link_to 'Edit', edit_corpus_item_path(corpus_item) %></td>
     <td><%= link_to 'Destroy', corpus_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

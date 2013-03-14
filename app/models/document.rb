@@ -20,6 +20,9 @@ class Document < ActiveRecord::Base
     string :corpus_name do
       corpus_item.corpus_name
     end
+    string :sub_corpus_name do
+      corpus_item.sub_corpus_name
+    end
     string :title do
       corpus_item.title
     end
