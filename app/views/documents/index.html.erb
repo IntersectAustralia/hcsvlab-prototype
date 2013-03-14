@@ -13,16 +13,20 @@
   <tr>
     <th>Corpus</th>
     <th>Sub-Corpus</th>
+    <th>Item</th>
     <th>Year</th>
     <th>Type</th>
+    <th>URL</th>
   </tr>
 
 <% @documents.each do |document| %>
   <tr>
     <td><%= document.corpus_item.corpus_name %></td>
+    <td><%= document.corpus_item.sub_corpus_name%></td>
     <td><%= document.corpus_item.title%></td>
     <td><%= document.corpus_item.year %></td>
     <td><%= document.media_type %></td>
+    <td><%= document.url %></td>
   </tr>
 <% end %>
 </table>

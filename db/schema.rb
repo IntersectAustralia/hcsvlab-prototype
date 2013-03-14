@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308033540) do
+ActiveRecord::Schema.define(:version => 20130314001753) do
 
   create_table "corpus_items", :force => true do |t|
     t.string   "title"
     t.integer  "year"
     t.string   "corpus_name"
     t.integer  "document_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "sub_corpus_name"
   end
 
   create_table "documents", :force => true do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130308033540) do
     t.integer  "corpus_item_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "url"
   end
 
 end

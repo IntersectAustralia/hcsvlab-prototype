@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
-  has_one :corpus_item
+  belongs_to :corpus_item
 
-  attr_accessible :media_type
+  attr_accessible :media_type, :url
 
   searchable do
     #keyword search (full text)

@@ -6,10 +6,14 @@
 </p>
 
 <p>
-  <b>Date:</b>
-  <%= @corpus_item.date %>
+  <b>Year:</b>
+  <%= @corpus_item.year %>
 </p>
 
+<p>
+  <b>Corpus:</b>
+  <%= @corpus_item.corpus_name %>
+</p>
 
 <%= link_to 'Edit', edit_corpus_item_path(@corpus_item) %> |
 <%= link_to 'Back', corpus_items_path %>

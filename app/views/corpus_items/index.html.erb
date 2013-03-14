@@ -12,7 +12,8 @@
 <% @corpus_items.each do |corpus_item| %>
   <tr>
     <td><%= corpus_item.title %></td>
-    <td><%= corpus_item.date %></td>
+    <td><%= corpus_item.year %></td>
+    <td><%= corpus_item.corpus_name %></td>
     <td><%= link_to 'Show', corpus_item %></td>
     <td><%= link_to 'Edit', edit_corpus_item_path(corpus_item) %></td>
     <td><%= link_to 'Destroy', corpus_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
