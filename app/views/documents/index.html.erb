@@ -7,8 +7,24 @@
 
 <%= render(:partial => 'search_form') %>
 
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <div class="btn btn-inverse btn-mini">Python</div>
+      </a>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <textarea class="span9"readonly="readonly" rows="6" cols="102"><%= get_python_query %></textarea>
+        <div class="offset7">
+          <a class="btn btn-inverse btn-mini" href="http://gsw1-hcsvlab-test2-vm.intersect.org.au:8080" target="_blank">Launch [IPy]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="pull-left">
+
 <table class="table">
   <tr>
     <th>Corpus</th>
