@@ -24,6 +24,8 @@ class DocumentsController < ApplicationController
       with(:media_type, params[:media_type]) if params[:media_type].present?
 
       order_by(:title, :asc)
+      
+      paginate :page=> 1, :per_page => 5000
     end
     @documents = @search.results
 
