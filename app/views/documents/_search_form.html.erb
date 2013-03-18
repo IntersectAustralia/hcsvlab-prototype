@@ -1,19 +1,6 @@
 <div class="well pull-left" style="height: 500px; max-width: 240px; padding: 8px 0;">
 <ul class="nav nav-list pull-left">
-  <li class="nav-header">Year</li>
-  <%= form_tag documents_path, :method => :get, :corpus_name => params[:corpus_name],
-        :sub_corpus_name => params[:sub_corpus_name],
-        :media_type => params[:media_type] do %>
-      <%= hidden_field_tag :media_type, params[:media_type] %>
-      <%= hidden_field_tag :corpus_name, params[:corpus_name] %>
-      <%= hidden_field_tag :sub_corpus_name, params[:sub_corpus_name] %> 
-
-      <label class="search-label">from</label>
-      <%= text_field_tag :year_from, params[:year_from] %><br>
-      <label class="search-label">to</label>
-      <%= text_field_tag :year_to, params[:year_to] %><br>
-      <%= submit_tag "Search"%>
-  <% end %>
+  
 
   <li class="nav-header">Corpus</li>
   <% for row in @search.facet(:corpus_name).rows %>
@@ -69,6 +56,21 @@
         :year_to => params[:year_to] %>)
     <% end %>
     </li>
+  <% end %>
+
+  <li class="nav-header">Year</li>
+  <%= form_tag documents_path, :method => :get, :corpus_name => params[:corpus_name],
+        :sub_corpus_name => params[:sub_corpus_name],
+        :media_type => params[:media_type] do %>
+      <%= hidden_field_tag :media_type, params[:media_type] %>
+      <%= hidden_field_tag :corpus_name, params[:corpus_name] %>
+      <%= hidden_field_tag :sub_corpus_name, params[:sub_corpus_name] %> 
+
+      <label class="search-label">from</label>
+      <%= text_field_tag :year_from, params[:year_from] %><br>
+      <label class="search-label">to</label>
+      <%= text_field_tag :year_to, params[:year_to] %><br>
+      <%= submit_tag "Search"%>
   <% end %>
 </ul>  
 </div>

@@ -23,27 +23,32 @@
   </div>
 </div>
 
-<div class="pull-left">
+<div class="pull-left" style="padding-left: 20px;">
 
+
+<% @title_grouped_docs = @documents.group_by {|d| d.corpus_item.title }%>
+
+<% @title_grouped_docs.each do |title, docs| %>
+
+<p><b><%=docs.first.corpus_item.corpus_name + '> ' + docs.first.corpus_item.sub_corpus_name + '> '+ title%></b></p>
 <table class="table">
-  <tr>
-    <th>Corpus</th>
-    <th>Sub-Corpus</th>
-    <th>Item</th>
+    <tr>
     <th>Year</th>
     <th>Type</th>
     <th>URL</th>
   </tr>
+<%docs.each do |document| %>
 
-<% @documents.each do |document| %>
   <tr>
-    <td><%= document.corpus_item.corpus_name %></td>
-    <td><%= document.corpus_item.sub_corpus_name%></td>
-    <td><%= document.corpus_item.title%></td>
     <td><%= document.corpus_item.year %></td>
     <td><%= document.media_type %></td>
     <td><%= document.url %></td>
   </tr>
+
+<% end %>
+</table>
+<br>
+<br>
 <% end %>
 </table>
 </div>

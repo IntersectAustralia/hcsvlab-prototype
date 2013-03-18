@@ -22,6 +22,8 @@ class DocumentsController < ApplicationController
       
       facet(:media_type)
       with(:media_type, params[:media_type]) if params[:media_type].present?
+
+      order_by(:title, :asc)
     end
     @documents = @search.results
 

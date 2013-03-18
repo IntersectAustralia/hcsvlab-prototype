@@ -1,6 +1,7 @@
 class Document < ActiveRecord::Base
   belongs_to :corpus_item
 
+
   attr_accessible :media_type, :url
 
   searchable do
