@@ -1,5 +1,7 @@
 HcsvWebapp::Application.routes.draw do
 
+  root :to => 'documents#index'
+
   resources :corpus_items
 
   resources :corps
