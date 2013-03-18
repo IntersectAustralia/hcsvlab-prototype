@@ -1,30 +1,54 @@
 <div class="well pull-left" style="height: 500px; max-width: 240px; padding: 8px 0;">
 <ul class="nav nav-list pull-left">
   <li class="nav-header">Year</li>
-  <%= form_tag documents_path, :method => :get do %>
+  <%= form_tag documents_path, :method => :get, :corpus_name => params[:corpus_name],
+        :sub_corpus_name => params[:sub_corpus_name],
+        :media_type => params[:media_type] do %>
+      <%= hidden_field_tag :media_type, params[:media_type] %>
+      <%= hidden_field_tag :corpus_name, params[:corpus_name] %>
+      <%= hidden_field_tag :sub_corpus_name, params[:sub_corpus_name] %> 
+
       <label class="search-label">from</label>
       <%= text_field_tag :year_from, params[:year_from] %><br>
       <label class="search-label">to</label>
       <%= text_field_tag :year_to, params[:year_to] %><br>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search"%>
   <% end %>
 
   <li class="nav-header">Corpus</li>
   <% for row in @search.facet(:corpus_name).rows %>
+    <li>
     <% if params[:corpus_name].blank? %>
-      <li><%= link_to row.value, :corpus_name => row.value %> (<%= row.count %>)</li>
+      <%= link_to row.value, :corpus_name => row.value,
+        :sub_corpus_name => params[:sub_corpus_name],
+        :media_type => params[:media_type],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to] %> (<%= row.count %>)
     <% else %>
-      <li><strong><%= row.value %></strong> (<%= link_to "remove", :corpus_name => nil %>)</li>
+      <strong><%= row.value %></strong> (<%= link_to "remove", :corpus_name => nil,
+        :sub_corpus_name => params[:sub_corpus_name],
+        :media_type => params[:media_type],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to] %>)
     <% end %>
+    </li>
   <% end %>    
 
   <li class="nav-header">Sub-Corpus</li>
   <% for row in @search.facet(:sub_corpus_name).rows %>
     <li>
     <% if params[:sub_corpus_name].blank? %>
-      <%= link_to row.value, :sub_corpus_name => row.value %> (<%= row.count %>)
+      <%= link_to row.value, :sub_corpus_name => row.value, 
+        :corpus_name => params[:corpus_name],
+        :media_type => params[:media_type],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to]%> (<%= row.count %>)
     <% else %>
-      <strong><%= row.value %></strong> (<%= link_to "remove", :sub_corpus_name => nil %>)
+      <strong><%= row.value %></strong> (<%= link_to "remove", :sub_corpus_name => nil,
+      :corpus_name => params[:corpus_name],
+        :media_type => params[:media_type],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to]%>)
     <% end %>
     </li>
   <% end %>
@@ -33,9 +57,16 @@
   <% for row in @search.facet(:media_type).rows %>
     <li>
     <% if params[:media_type].blank? %>
-      <%= link_to row.value, :media_type => row.value %> (<%= row.count %>)
+      <%= link_to row.value, :media_type => row.value, :corpus_name => params[:corpus_name],
+        :sub_corpus_name => params[:sub_corpus_name],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to]%> (<%= row.count %>)
     <% else %>
-      <strong><%= row.value %></strong> (<%= link_to "remove", :media_type => nil %>)
+      <strong><%= row.value %></strong> (<%= link_to "remove", :media_type => nil,
+      :corpus_name => params[:corpus_name],
+        :sub_corpus_name => params[:sub_corpus_name],
+        :year_from => params[:year_from],
+        :year_to => params[:year_to] %>)
     <% end %>
     </li>
   <% end %>
