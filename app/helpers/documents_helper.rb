@@ -11,7 +11,7 @@ module DocumentsHelper
   end
 
   def get_rstudio_query
-    python_string = "source(\"~/Rscripts/hcsvlab_commands.R\")\n"
+    python_string = "library(\"hcsvlab\")\n"
     python_string << "url = \"http://gsw1-hcsvlab-test3-vm.intersect.org.au:8080/documents.json\"\n"
     python_string << "corpus_dir = \"my_corpus\" # change 'my_corpus' to the name of the directory you want to download to\n"
     query_fields = %w[corpus_name sub_corpus_name year_from year_to media_type]
