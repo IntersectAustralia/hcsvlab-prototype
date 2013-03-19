@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
 
       order_by(:title, :asc)
       
-      paginate :page=> 1, :per_page => 5000
+      #paginate :page=> 1, :per_page => 5000
     end
     @documents = @search.results
 
