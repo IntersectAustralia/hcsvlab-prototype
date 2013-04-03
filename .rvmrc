@@ -1,1 +1,1 @@
-rvm 1.9.3-p286@hcsvlab --create
+rvm use 1.9.3-p286@hcsvlab-prototype --create
